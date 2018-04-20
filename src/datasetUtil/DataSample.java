@@ -22,7 +22,7 @@ public class DataSample {
 
 
 	/**
-	 * DataSample的构造函数l
+	 * DataSample的构造函数2
 	 * @param name
 	 * @param 处理器个数
 	 * @param Application个数

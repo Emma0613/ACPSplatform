@@ -23,12 +23,13 @@ public class Application {
 	private Integer criticality;//应用的关键级
 	private double arrivalTime=0d;//应用的到达时刻,默认值为0时刻
 	private double relativeDeadline=0d;//application的截止时长（绝对）
-	private List<Task> taskList=new ArrayList<Task>(); ;//application所包含的任务集合
+	private List<Task> taskList=new ArrayList<Task>(); ;//application所包含的任务集合列表，元素顺序为从入口开始广度优先对图遍历 行程的节点序列
 	private Integer[][] communicationMatrix;//任务图，其中边上的权值表示通信时间
 	private Integer[][] computingMatrix;//WCRT矩阵，存储某个任务i在ECUj上的wcrt
 	
-	/**Application的衍生数据*/
+	/**Application的衍生数据：辅助计算用的or用其他算法算出来的*/
 	private double absDeadline;//是arriveTime与deadline的和，在生成数据的函数里进行计算
+	private double lowerBound;//一个app在计算平台上的最短执行完成时间。用于在生成数据时设置deadline
 	private Task entryTask;//application任务图的入口任务
 	private Task exitTask;//application任务图的出口任务
 	private List<Task> taskOrigialList = new ArrayList<Task>(); //按照communicationMatrix来的原始任务列表
@@ -94,6 +95,16 @@ public void initApplication_withoutDeadline(Integer[][] computingMatrix, Integer
 		return relativeDeadline;
 	}
 	
+	//完成时间的底线
+	public double getLowerBound() {
+		return lowerBound;
+	}
+
+
+	public void setLowerBound(double lowerBound) {
+		this.lowerBound = lowerBound;
+	}
+
 	//入口任务
 	public Task getEntryTask() {
 		return entryTask;
