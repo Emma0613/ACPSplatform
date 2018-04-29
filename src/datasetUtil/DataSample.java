@@ -27,7 +27,7 @@ public class DataSample {
 	 * @param 处理器个数
 	 * @param Application个数
 	 */
-	DataSample(String name,int processorAmount,int applicationAmount){
+	public DataSample(String name,int processorAmount,int applicationAmount){
 		this.name=name;
 		this.processorAmount=processorAmount;
 		this.applicationAmount=applicationAmount;
